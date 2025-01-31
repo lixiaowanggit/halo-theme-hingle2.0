@@ -1,7 +1,7 @@
 apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 metadata:
-  name: pedro_hingle2.0
+  name: halo-theme-hingle2.0
 spec:
   displayName: Hingle2.0
   author:
