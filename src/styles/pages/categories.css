@@ -1,0 +1,22 @@
+.category-list {
+    list-style: none;
+    padding: 0;
+}
+.category-list li {
+    margin: 0.6rem 0;
+    padding: 0.8rem 1rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.category-list li:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+}
+.empty-message {
+    text-align: center;
+    padding: 2rem 0;
+    color: #666;
+}

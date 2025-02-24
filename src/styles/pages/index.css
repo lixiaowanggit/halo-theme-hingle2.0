@@ -1,0 +1,35 @@
+/* 首页大标题 */
+.home-title {
+  text-align: center;
+  margin-bottom: 3em;
+  animation: fade-in-bottom .3s both;
+  -webkit-animation: fade-in-bottom .3s both;
+}
+
+.home-title h1 {
+  color: #6e8aad;
+  color: var(--blue);
+}
+
+.home-title span {
+  display: block;
+  margin-bottom: 1em;
+  font-style: oblique;
+}
+
+/* 社交链接 */
+.home-social {
+  cursor: default;
+  user-select: none;
+}
+
+.home-social a {
+  color: inherit;
+  display: inline-block;
+}
+
+.home-social i {
+  padding: .5em;
+}
+
+  

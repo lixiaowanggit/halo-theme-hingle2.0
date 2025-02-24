@@ -1,0 +1,64 @@
+/* 适配 Moments */
+
+.moments .tag::before {
+    content: "#";
+  }
+  
+  .moments .tag {
+    text-decoration: none;
+    /* font-style: italic; */
+  }
+  
+  .moments .tag:hover {
+    text-decoration: underline;
+  }
+  
+.moments {
+    list-style: none;
+    padding: 0;
+}
+
+.moments li {
+    margin: 1.5rem 0;  /* 增加间距 */
+    padding: 1.2rem 1.5rem;  /* 增加内边距 */
+    background: var(--bg-secondary);  /* 使用主题变量 */
+    border-radius: 12px;  /* 圆角 */
+    transition: all 0.3s ease;  /* 平滑过渡 */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);  /* 柔和阴影 */
+}
+
+.moments li:hover {
+    transform: translateY(-2px);  /* 向上浮动效果 */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);  /* 悬停时加深阴影 */
+}
+
+/* 适配深色模式 */
+:root[data-theme="dark"] .moments li {
+    background: var(--bg-tertiary);  /* 深色模式下的背景色 */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);  /* 深色模式下的阴影 */
+}
+
+:root[data-theme="dark"] .moments li:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);  /* 深色模式下悬停时的阴影 */
+}
+
+/* 保持其他现有样式 */
+.moments time {
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.moment-media {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.moment-media img {
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.moment-media img:hover {
+    transform: scale(1.02);  /* 图片悬停效果 */
+}
+  

@@ -1,0 +1,110 @@
+/* 相册容器 */
+.gallery-photos {
+    width: 100%;        /* 确保相册容器占满父容器宽度 */
+    column-count: 4;    /* 设置4列 */
+    column-gap: 15px;   /* 列间距 */
+    padding: 15px;
+    box-sizing: border-box; /* 确保padding不会增加总宽度 */
+}
+
+/* 每个图片容器 */
+.gallery-photo {
+    break-inside: avoid; /* 防止图片被分割 */
+    margin-bottom: 15px;
+    display: block;  /* 改为 block */
+    width: 100%;     /* 保持宽度100% */
+    box-sizing: border-box; /* 确保padding和border不会增加宽度 */
+    transition: all 0.3s ease;
+}
+
+/* 图片样式 */
+.gallery-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    object-fit: cover; /* 确保图片填充容器 */
+}
+
+.gallery-photo:hover img {
+    transform: scale(1.02);
+}
+
+/* 响应式布局 */
+@media screen and (min-width: 1400px) {  /* 改用 min-width */
+    .gallery-photos {
+        column-count: 4;
+    }
+}
+
+@media screen and (max-width: 1399px) {
+    .gallery-photos {
+        column-count: 3;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .gallery-photos {
+        column-count: 2;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .gallery-photos {
+        column-count: 1;
+    }
+}
+
+/* 图片组标题 */
+.photos-team {
+    width: 100%;
+    margin: 2em 0 1em;
+    break-inside: avoid;
+    font-size: 1.5em;
+    color: var(--card-text-color-main);
+}
+
+/* 加载动画 */
+.loading {
+    text-align: center;
+    padding: 20px;
+}
+
+/* 淡入动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gallery-photo {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* CSS 变量 */
+:root {
+    --card-border-radius: 10px;
+    --shadow-l1: 0px 4px 8px rgba(0, 0, 0, .04), 
+                0px 0px 2px rgba(0, 0, 0, .06), 
+                0px 0px 1px rgba(0, 0, 0, .04);
+}
+
+/* 内容区域基础样式 */
+.post-content {
+    margin: var(--card-padding) 0;
+    color: var(--card-text-color-main);
+}
+
+/* 包装容器样式 */
+.wrap.min {
+    max-width: 1600px;  /* 增加最大宽度，适应4列布局 */
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;        /* 确保容器占满可用空间 */
+}

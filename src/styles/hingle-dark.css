@@ -1,0 +1,82 @@
+/* 暗色主题基础样式 */
+.dark-theme {
+  color: #aaa;
+  background: #0f172a;
+
+  --blue: #6e8aad;
+  --light-blue: #6f9fc7;
+
+  --border: #555;
+  --dark-border: #666;
+  --light-border: #555;
+
+  --light-background: #444;
+
+  --text-accent: #26d770; /* 强调色 */
+  --text-normal: #e8e8e9;     /* 正常文本颜色 */
+  --text-bright: #aaa;     /* 高亮文本颜色 */
+  --main-gradient: linear-gradient(90deg, #3a92a6, #710c8d); /* 渐变背景 */
+}
+
+/* 滚动条 */
+.dark-theme::-webkit-scrollbar {
+  border-color: transparent;
+  background: rgba(255, 255, 255, .2);
+}
+
+/* 图片 */
+.dark-theme img {
+  filter: brightness(60%);
+  -webkit-filter: brightness(60%);
+}
+
+/* 链接 */
+.dark-theme a {
+  color: #6e8aad;
+}
+.dark-theme a:hover {
+  color: #6f9fc7;
+}
+
+/* 按钮 */
+.dark-theme .btn {
+  background: #6e8aad;
+}
+.dark-theme .btn:hover {
+  background: #6f9fc7;
+}
+
+/* 引用 */
+.dark-theme blockquote {
+  color: #ddd;
+  border-color: #eb9c26;
+  background: rgba(255, 255, 255, .05);
+}
+
+/* iframe 和 em */
+.dark-theme iframe,
+.dark-theme em {
+  opacity: .6;
+}
+
+/* 代码 */
+.dark-theme :not(pre) > code {
+  color: #ffa5a5;
+  background: rgba(255, 255, 255, .2);
+}
+
+/* 输入框 */
+.dark-theme input,
+.dark-theme textarea {
+  background: #666;
+  border-color: transparent;
+}
+
+/* 搜索框 */
+.dark-theme .head-search input {
+  background: #666;
+  border-color: transparent;
+}
+.dark-theme .head-search input::-webkit-input-placeholder {
+  color: #bbb;
+} 

@@ -1,0 +1,37 @@
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2') format('woff2');
+}
+
+/* 只保留用到的图标 */
+.toggle-btn:before { content: "\f0c9" } /* bars */
+.light-btn:before { content: "\f0eb" }  /* lightbulb */
+.search-btn:before { content: "\f002" } /* search */
+.head-menu .has-child > a:after { content: "\f107" } /* angle-down */
+
+.post-meta .date:before { content: "\f017" }    /* clock */
+.post-meta .category:before { content: "\f07b" } /* folder */
+.post-meta .user:before { content: "\f007" }    /* user */
+.post-meta .comments:before { content: "\f086" } /* comments */
+.post-meta .view:before { content: "\f080" }    /* chart-bar */
+.post-meta .tags:before { content: "\f02c" }    /* tags */
+
+/* 添加返回顶部按钮图标 */
+.fa-arrow-up:before { content: "\f062" }        /* arrow-up */
+
+/* 通用样式 */
+[class^="toggle-btn"]:before,
+[class^="light-btn"]:before,
+[class^="search-btn"]:before,
+.head-menu .has-child > a:after,
+.post-meta span:before,
+.post-meta time:before,
+.fa-arrow-up:before {  /* 添加到选择器列表中 */
+  display: inline-block;
+  font-family: 'FontAwesome';
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+} 

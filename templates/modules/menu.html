@@ -1,0 +1,22 @@
+<th:block th:fragment="menu">
+  <nav class="head-menu">
+    <th:block th:with="menu = ${menuFinder.getPrimary()}">
+      <th:block th:each="menuItem : ${menu?.menuItems}">
+        <th:block th:if="${#lists.isEmpty(menuItem.children)}">
+          <a th:href="${menuItem.status.href}" th:text="${menuItem.status.displayName}">
+          </a>
+        </th:block>
+
+        <div th:if="${not #lists.isEmpty(menuItem.children)}" class="has-child">
+          <a href="javascript:void(0)" class="parent-link" th:text="${menuItem.status.displayName}">
+          </a>
+          <div class="sub-menu">
+            <a th:each="child : ${menuItem.children}" th:href="${child.status.href}"
+              th:text="${child.status.displayName}">
+            </a>
+          </div>
+        </div>
+      </th:block>
+    </th:block>
+  </nav>
+</th:block>

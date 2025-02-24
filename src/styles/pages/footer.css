@@ -1,0 +1,42 @@
+/* 页尾样式 */
+footer {
+    border-top: 1px solid var(--light-border);
+    transition: border .3s, background .3s;
+}
+
+/* 按钮容器 */
+footer .buttons {
+    right: 1em;
+    bottom: 5em;
+    z-index: 1;
+    position: fixed;
+}
+
+/* 返回顶部按钮 */
+footer .to-top {
+    padding: .5em;
+    display: block;
+    cursor: pointer;
+    background: #fff;
+    background: var(--light-background);
+    border-radius: .25em;
+    border-radius: var(--radius);
+    border: 1px solid #eee;
+    border-color: var(--border);
+    transform: translateX(5em);
+    transition: color .3s, border .3s, background .3s, transform .3s;
+}
+
+footer .to-top.active { 
+    transform: translateX(0) 
+}
+
+/* 页尾版权信息 */
+footer .sub-footer {
+    padding: 1em 0;
+    text-align: center;
+}
+
+footer .sub-footer p { 
+    font-size: .875em 
+}

@@ -1,0 +1,84 @@
+/* 亮色主题基础样式 */
+:root {
+  --blue: #6f9fc7;
+  --light-blue: #9fcff7;
+
+  --border: #ddd;
+  --dark-border: #ccc;
+  --light-border: #eee;
+
+  --light-background: #fff;
+
+  --radius: .25em;
+
+
+  --text-accent: #87e99e; /* 强调色 */
+  --text-normal: #333;     /* 正常文本颜色 */
+  --text-bright: #000;     /* 高亮文本颜色 */
+  --main-gradient: linear-gradient(90deg, #3a92a6, #710c8d); /* 渐变背景 */
+}
+
+body {
+  color: #555;
+  font-weight: 300;
+  background: #fafafa;
+  transition: margin .3s, background .3s;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--blue);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--light-blue);
+}
+body::-webkit-scrollbar {
+  border-left: 1px solid var(--light-border);
+  background: rgba(255, 255, 255, .6);
+}
+
+/* 链接 */
+a {
+  color: var(--blue);
+}
+a:hover {
+  color: var(--light-blue);
+}
+
+/* 标题 */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+/* 分割线 */
+hr {
+  border-color: #eee;
+}
+
+/* 按钮 */
+.btn {
+  color: #fff;
+  background: var(--blue);
+}
+.btn:hover {
+  color: #fff;
+  background: var(--light-blue);
+}
+
+/* 引用 */
+blockquote {
+  background: #ecf1f5;
+  border-color: var(--blue);
+  border-radius: var(--radius);
+}
+
+/* 输入框 */
+input, textarea {
+  background: var(--light-background);
+  border-color: var(--dark-border);
+  transition: border .3s, background .3s;
+} 

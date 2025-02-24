@@ -1,0 +1,17 @@
+<header>
+    <div class="head-title">
+        <h4 th:text="${title}" class="font-source-han-serif"></h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn">
+            <div class="animated-icon"><span></span><span></span><span></span></div>
+        </div>
+        <!-- <div class="light-btn"></div> -->
+        <th:block th:if="${pluginFinder.available('PluginSearchWidget')}">
+            <a class="search-btn" href="javascript:SearchWidget.open()"></a>
+        </th:block>
+    </div> 
+
+    <th:block th:replace="~{modules/menu}" />
+
+</header>
