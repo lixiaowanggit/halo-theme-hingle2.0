@@ -1,26 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org"
-    th:replace="~{module/macro :: html(title = ${post.spec.title} + '-' + ${site.title}, head = ~{::head}, content = ~{::content})}">
-<th:block th:fragment="head">
-
-    <script>isPost = true;</script>
-
-    <th:block th:if="${theme.config.genernal.KaTex_plugin}">
-        <link rel="stylesheet"
-            th:href="@{/assets/plugins/katex/dist/katex.min.css?v={version}(version=${theme.spec.version})}">
-        <script th:src="@{/assets/plugins/katex/dist/katex.min.js?v={version}(version=${theme.spec.version})}"></script>
-    </th:block>
-
-    <link rel="stylesheet" th:href="@{https://cdn.staticfile.org/highlight.js/11.9.0/styles/{css}(css=${theme.config.genernal.code_css})}">
-    <script src="https://cdn.staticfile.org/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
-</th:block>
+    th:replace="~{modules/layout :: html(title = ${post.spec.title} + '-' + ${site.title}, content = ~{::content}, template = 'post')}">
 
 <th:block th:fragment="content">
     <main>
         <div class="wrap min">
-            <section class="post-title">
-                <h2 th:text="${post.spec.title}"></h2>
+            <section class="home-title text-center">
+                <h1 th:text="${post.spec.title}"></h1>
                 <div class="post-meta">
                     <time class="date" th:text="${#dates.format(post.spec.publishTime, 'yyyy.MM.dd')}"></time>
 
@@ -68,23 +54,11 @@
                 </section>
             </th:block>
 
-            <!-- 作者寄语 -->
-            <th:block th:if="${theme.config.genernal.author_text} != null">
-                <section class="post-author">
-                    <figure class="author-avatar">
-                        <img th:src="@{${site.logo}}" />
-                    </figure>
-                    <div class="author-info">
-                        <h4 th:text="${site.title}"></h4>
-                        <p th:utext="${theme.config.genernal.author_text}"></p>
-                    </div>
-                </section>
-            </th:block>
 
             <!-- 需要判断当前评论组件是否满足显示的条件，这个变量可能是是否安装评论插件、文章是否开启评论等条件的组合 -->
             <div id="halo-comment" th:if="${haloCommentEnabled}">
 
-                <script>
+                <!-- <script>
                     var onli;
                     if (document.cookie.indexOf("night") !== -1) {
                         if (document.cookie.indexOf("night=true") !== -1) {
@@ -93,9 +67,9 @@
                     } else {
                         onli = 'light'
                     }
-                </script>
-                <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}"
-                    colorScheme="onli" />
+                </script> -->
+                <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}"/>
+                    <!-- colorScheme="onli" /> -->
             </div>
 
         </div>

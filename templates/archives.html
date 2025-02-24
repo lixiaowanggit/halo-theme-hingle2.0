@@ -1,42 +1,50 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org"
-    th:replace="~{module/macro :: html(title = '归档' + ${site.title}, head = ~{::head}, content = ~{::content})}">
+    th:replace="~{modules/layout :: html(title = '归档' + ${site.title}, content = ~{::content})}">
 
-    <th:block th:fragment="head">
-        <head>
-            <link rel="stylesheet" th:href="@{/assets/css/archives.css?v={version}(version=${theme.spec.version})}" />
-        </head>
-    </th:block>
+<th:block th:fragment="content">
+    <main>
+        <div class="wrap min">
+            <section class="home-title">
+                <h1>"时光长廊"</h1>
+            </section>
 
-    <th:block th:fragment="content">
-
-        <main>
-            <div class="wrap min">
-                <section class="page-title">
-                    <h1>归档</h1>
-                </section>
-
-                <section class="post-archive">
-                    <th:block th:each="archive : ${archives.items}">
-                        <h2 th:text="${archive.year}"></h2>
-                        <ul class="listing">
+            <section>
+                <div class="bg-ob-deep-800 px-14 py-16 rounded-2xl shadow-xl block min-h-screen mt-4">
+                    <ul class="timeline timeline-centered">
+                        <th:block th:each="archive : ${archives.items}">
                             <th:block th:each="month : ${archive.months}">
-                                <li th:each="post : ${month.posts}"><span class="date" th:text="${#dates.format(post.spec.publishTime, 'yyyy年MM月dd日')}"></span><a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}"></a></li>
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">[[${month.month}]] [[${archive.year}]]</h2>
+                                    </div>
+                                </li>
+                                <li class="timeline-item" th:each="post : ${month.posts}">
+                                    <div class="timeline-info">
+                                        <span th:text="${#dates.format(post.spec.publishTime, 'MM/dd/yyyy')}"></span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a th:href="@{${post.status.permalink}}" th:title="${post.spec.title}" class="">
+                                            <h3 th:text="${post.spec.title}" class="timeline-title"></h3>
+                                        </a>
+                                        <p th:text="${post.status.excerpt}"></p>
+                                    </div>
+                                </li>
                             </th:block>
-                        </ul>
 
-                    </th:block>
-                </section>
+                        </th:block>
 
+                    </ul>
+                </div>
                 <!-- 分页 -->
-                <section class="page-navigator">
-                    <a th:if="${archives.hasPrevious()}" class="extend prev" rel="prev" th:href="@{${archives.prevUrl}}">«</a>
-                    <span class="page-number current" th:text="${archives.page}"></span>
-                    <a th:if="${archives.hasNext()}" class="extend next" rel="next" th:href="@{${archives.nextUrl}}">»</a>
-                </section>
-            </div>
-        </main>
+                <th:block th:replace="~{modules/pagination :: pagination(items=${archives})}"></th:block>
+            </section>
 
-    </th:block>
+        </div>
+    </main>
+</th:block>
 
 </html>

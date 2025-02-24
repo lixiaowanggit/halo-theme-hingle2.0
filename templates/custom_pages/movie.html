@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- <html xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{modules/layout :: html(title = ${site.title}, content = ~{::content})}"> -->
+
+<html xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{modules/layout :: html(title = ${site.title}, content = ~{::content})}">
+
+<th:block th:fragment="content">
+  <main>
+  <div class="wrap min">
+
+    <section class="home-title">
+      <h1 th:text="'&quot;' + ${category.spec.displayName} + '&quot;'"></h1>
+      <span th:text="${category.spec.description}"></span>
+    </section>
+
+      <div class="main-content index-page clearfix">
+        <div class=" post-lists" x-data="random">
+          <div class="post-lists-body" th:attr="x-data=|{post_color: ${theme.config.style.post_color}}|">
+            <div th:each="post : ${posts.items}" class="post-list-item">
+              <div class="post-list-item-container">
+                <div th:if="not ${#strings.isEmpty(post.spec.cover)}" class="item-thumb"
+                  th:style="|background-image:url(${post.spec.cover});|"></div>
+                <div th:if="${#strings.isEmpty(post.spec.cover)}" class="item-thumb"
+                  :class="`${post_color ? `bg-${randomColor()}`:'bg-deepgrey'}`">
+                </div>
+                <a th:href="${post.status.permalink}">
+                  <div class="item-desc">
+                    <p th:text="${post.status.excerpt}"></p>
+                  </div>
+                </a>
+                <div class="item-slant reverse-slant" :class="`${post_color? `bg-${randomColor()}`:'bg-deepgrey'}`">
+                </div>
+                <div class="item-slant"></div>
+                <div class="item-label">
+                  <div class="item-title">
+                    <a th:href="${post.status.permalink}" th:text="${post.spec.title}"></a>
+                  </div>
+                  <div class="item-meta clearfix">
+                    <!-- icon  -->
+                    <div class="item-meta-ico" :class="`bg-ico-${randomIcon()}`"
+                      th:style="|background: url(@{/assets/images/bg-ico.png}) no-repeat;background-size: 40px auto;|">
+                    </div>
+                    <div class="item-meta-cat">
+                      <th:block th:if="${ not #lists.isEmpty(post.categories)}">
+                        <a th:href="${post.categories[0].status.permalink}"
+                          th:text="${post.categories[0].spec.displayName}"></a>
+                      </th:block>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <th:block th:replace="~{modules/pagination :: pagination(items=${posts})}"></th:block>
+  </div>
+  </main>
+</th:block>
+
+</html>

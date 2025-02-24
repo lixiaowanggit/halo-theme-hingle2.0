@@ -1,8 +1,5 @@
 import {
   defineConfig,
-  Preset,
-  PresetOptions,
-  SourceCodeTransformer,
   presetUno,
   presetIcons,
   transformerDirectives,

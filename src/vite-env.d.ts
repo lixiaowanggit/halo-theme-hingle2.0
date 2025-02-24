@@ -2,12 +2,12 @@
 /// <reference types="@types/node" />
 
 import type { Alpine } from 'alpinejs';
-
-export {};
+import type { ThemeConfig } from "./scripts/index";
 
 declare global {
   interface Window {
     Alpine: Alpine;
+    themeConfig: ThemeConfig;
   }
 }
 
@@ -16,3 +16,5 @@ declare module 'unocss/vite' {
   const unocss: () => Plugin;
   export default unocss;
 }
+
+export {};

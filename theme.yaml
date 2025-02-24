@@ -5,16 +5,19 @@ metadata:
 spec:
   displayName: Hingle2.0
   author:
-    name: Pedro
-    website: https://www.pedronull.xyz
-  description: 🎈 一个简洁大气，含夜间模式的 halo 博客主题
+    name: Dujing
+    website: https://blog.dujing.space
+  description: 基于halo-theme-hingle2.0的魔改主题
   logo: http://cdn.sep.cc/avatar/e2d1f9c5da125994d7bf02c691e3124a?s=256&d=identicon
-  homepage: https://github.com/Pedro-null/halo-theme-hingle2.0
-  repo: https://github.com/PedroNull/halo-theme-hingle2.0.git
+  homepage: https://github.com/lixiaowanggit/halo-theme-hingle2.0
+  repo: https://github.com/lixiaowanggit/halo-theme-hingle2.0.git
   settingName: "theme-Hingle-setting"
   configMapName: "theme-Hingle-configMap"
-  version: 2.0.2
+  version: 2.2.0
   requires: 2.0.0
-  license:
-    - name: "MIT"
-      url: "https://github.com/Pedro-null/halo-theme-hingle2.0/blob/main/LICENSE"
+  customTemplates:
+    category:
+      - name: 书影分类模板
+        description: 书影等需要展示封面的分类展示
+        screenshot:
+        file: ./custom_pages/movie.html

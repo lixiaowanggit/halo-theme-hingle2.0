@@ -1,17 +1,22 @@
-<!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org"
-    th:replace="~{module/macro :: html(title = '404'  + '-' + ${site.title}, head=null, content = ~{::content})}">
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="https://www.thymeleaf.org"-->
+<!--    th:replace="~{modules/layout :: html(title = '404'  + '-' + ${site.title}, content = ~{::content})}">-->
 
-<th:block th:fragment="content">
-    <main>
-        <div class="wrap">
-            <div class="error-page">
-                <h1>404</h1>
-                <p>找不到页面啦</p>
-                <img th:src="@{/assets/images/404.png}" />
-            </div>
-        </div>
-    </main>
-</th:block>
+<!--<th:block th:fragment="content">-->
+<!--    <div class="error-404-container" x-data="{ particles: Array(30).fill('4').concat(Array(30).fill('0')) }">-->
+<!--        <template x-for="(particle, index) in particles" :key="index">-->
+<!--            <span class="error-404-particle" x-text="particle"></span>-->
+<!--        </template>-->
+<!--        <article class="error-404-content">-->
+<!--            <p>错误提示</p>-->
+<!--            <p>您似乎迷失了方向</p>-->
+<!--            <p>-->
+<!--                <a href="/">-->
+<!--                    <button>返回主页</button>-->
+<!--                </a>-->
+<!--            </p>-->
+<!--        </article>-->
+<!--    </div>-->
+<!--</th:block>-->
 
-</html>
+<!--</html>-->

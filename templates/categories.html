@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org"
-    th:replace="~{module/macro :: html(title = '分类列表' + ${site.title}, head = null, content = ~{::content})}">
+    th:replace="~{modules/layout :: html(title = '分类列表' + ${site.title}, content = ~{::content})}">
 
 <th:block th:fragment="content">
-
     <main>
         <div class="wrap min">
-            <section class="page-title">
-                <h1>分类</h1>
+            <section class="home-title">
+                <h1>"分类"</h1>
             </section>
 
-            <section class="post-content">
-
+            <section class="post-content categories-section">
                 <th:block th:if="${not #lists.isEmpty(categories)}">
-                    <ul>
-                        <li th:replace="~{module/category-tree :: single(categories=${categories})}" />
+                    <ul class="category-list">
+                        <li th:replace="~{modules/category-tree :: single(categories=${categories})}" />
                     </ul>
+                </th:block>
+                <th:block th:if="${#lists.isEmpty(categories)}">
+                    <div class="empty-message">
+                        <p>暂时还没有任何分类</p>
+                    </div>
                 </th:block>
             </section>
         </div>
     </main>
 
 </th:block>
-
-
 
 </html>

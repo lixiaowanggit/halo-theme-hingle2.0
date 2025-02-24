@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org"
-    th:replace="~{module/macro :: html(title = '相册' -  ${site.title}, head=~{::head}, content = ~{::content})}">
+    th:replace="~{modules/layout :: html(title = '相册' +  ${site.title}, content = ~{::content})}">
 
-<th:block th:fragment="head">
-
-    <link rel="stylesheet" th:href="@{/assets/css/photos_style.css}">
-    </th>
-</th:block>
 
 <th:block th:fragment="content">
     <main>
         <div class="wrap min">
             <section class="home-title">
-                <h1>相册</h1>
+                <h1>"杂记相册"</h1>
             </section>
 
             <section class="post-content">
-                <th:block th:each="group : ${groups}">
+                <!-- 使用 photoFinder API 获取数据 -->
+                <th:block th:each="group : ${photoFinder.groupBy()}">
                     <h2 class="photos-team" th:text="${group.spec.displayName}"></h2>
-                    <div class="item" th:each="photo : ${group.photos}">
-                        <img th:src="${photo.spec.url}" th:alt="${photo.spec.displayName}">
+                    <div class="gallery-photos page">
+                        <div class="gallery-photo visible" th:each="photo : ${group.photos}" >
+                            <img class="photo-img" loading="lazy" decoding="async" th:src="${photo.spec.url}" th:alt="${photo.spec.displayName}">
+                        </div>
                     </div>
                 </th:block>
             </section>
 
-            <!-- 分页 -->
-            <section class="page-navigator">
-                <a th:if="${photos.hasPrevious()}" class="extend prev" rel="prev" th:href="@{${photos.prevUrl}}">«</a>
-                <span class="page-number current" th:text="${photos.page}"></span>
-                <a th:if="${photos.hasNext()}" class="extend next" rel="next" th:href="@{${photos.nextUrl}}">»</a>
-            </section>
+            <script th:src="@{/assets/lib/ViewImage/view-image.min.js}"></script>
+            <script>
+                // 初始化图片查看器
+                window.ViewImage && ViewImage.init('.gallery-photo img');
+                
+                // 处理图片加载错误
+                document.querySelectorAll('.photo-img').forEach(img => {
+                    img.addEventListener('error', function() {
+                        this.src = '@{/assets/images/photo_loading.gif}';
+                    });
+                });
+            </script>
 
         </div>
 

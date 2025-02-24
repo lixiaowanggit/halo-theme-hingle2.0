@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN" th:fragment="html (title,content)">
+
+<head>
+  <meta charset="UTF-8" />
+  <title th:text="${title}"></title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1" />
+  <meta property="og:site_name" th:attr="content= ${site.title}" />
+  <link rel="icon" th:href="@{${site.logo}}" sizes="192x192" />
+
+  <link rel="stylesheet" th:href="@{/assets/dist/main.css(v=${theme.spec.version})}" />
+  <script th:src="@{/assets/dist/main.iife.js(v=${theme.spec.version})}"></script>
+
+  <script th:inline="javascript">
+    window.themeConfig = /*[[${theme.config}]]*/ {};
+  </script>
+
+</head>
+
+<body th:data-template="${template}">
+  <th:block th:replace="~{modules/header}" />
+
+  <th:block th:replace="${content}" />
+
+  <th:block th:replace="~{modules/footer}" />
+</body>
+
+</html>

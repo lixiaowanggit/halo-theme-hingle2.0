@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import UnoCSS from 'unocss/vite';
 import unocssConfig from './uno.config';
+import fg from 'fast-glob';
 
 export default defineConfig({
   plugins: [
@@ -11,6 +12,15 @@ export default defineConfig({
       inspector: true,
       mode: 'global',
     }),
+    {
+      name: "watch-templates",
+      async buildStart() {
+        const files = await fg(["./templates/**/*.html"]);
+        for (const file of files) {
+          this.addWatchFile(file);
+        }
+      },
+    },
   ],
   build: {
     outDir: fileURLToPath(new URL('./templates/assets/dist', import.meta.url)),

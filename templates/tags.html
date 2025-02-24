@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org"
-    th:replace="~{module/macro :: html(title = '标签列表' + ${site.title}, head = null, content = ~{::content})}">
+    th:replace="~{modules/layout :: html(title = '标签列表' + ${site.title}, content = ~{::content})}">
 
-    <th:block th:fragment="content">
+<th:block th:fragment="content">
+    <main>
+        <div class="wrap min">
+            <section class="home-title">
+                <h1>"标签"</h1>
+            </section>
 
-        <main>
-            <div class="wrap min">
-                <section class="page-title">
-                    <h1>标签</h1>
-                </section>
-
-                <section class="post-content">
-
-                    <th:block th:if="${not #lists.isEmpty(tags)}">
-                        <li th:each="tag : ${tags}"><a th:text="${tag.spec.displayName}" th:href="${tag.status.permalink}"></a></li>
-                    </th:block>
-                </section>
-            </div>
-        </main>
-
-    </th:block>
+            <section class="post-content">
+                <div class="tagcloud-container">
+                    <div id="tagCloud">
+                        <th:block th:if="${not #lists.isEmpty(tags)}">
+                            <th:block th:each="tag : ${tags}">
+                                <span class="tag-item"
+                                      th:text="${tag.spec.displayName}"
+                                      th:data-url="@{${tag.status.permalink}}"
+                                      th:data-weight="${tag.postCount}">
+                                </span>
+                            </th:block>
+                        </th:block>
+                        <th:block th:if="${#lists.isEmpty(tags)}">
+                            <div class="empty-message">暂无标签</div>
+                        </th:block>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</th:block>
 
 </html>
